@@ -1,0 +1,404 @@
+[
+    {
+        "pipeline_id": "20260907_132702",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 12323,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 1.42,
+            "weights_file": "data/models/weights/20260907_132702_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260907_132702_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 4.048865957884118e-05,
+                "final_train_loss": 0.004931185394525528,
+                "final_pde_loss": 2.7998768928227946e-05,
+                "final_dir_loss": 3.232197229863232e-07,
+                "final_neu_loss": 6.287122232606634e-05,
+                "final_data_loss": 0.0004618247039616108
+            },
+            "timestamp": "2026-09-07 13:29:07"
+        },
+        "decoder_lbfgs": {
+            "optimizer": "L-BFGS",
+            "execution_time_minutes": 14.42,
+            "weights_file": "data/models/weights/20260907_132702_decoder_lbfgs.weights.h5",
+            "history_file": "data/models/histories/20260907_132702_decoder_lbfgs.loss.npz",
+            "lambdas": {
+                "pde": 50.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 50.0
+            },
+            "metrics": {
+                "final_train_loss": 0.020686185212876365,
+                "final_val_loss": 1.2369282022351356e-05,
+                "final_pde_loss": 9.643109554998556e-06,
+                "final_dir_loss": 2.6262259864547193e-07,
+                "final_neu_loss": 0.00016661694211935174,
+                "final_data_loss": 0.0004035220261168139
+            },
+            "timestamp": "2026-09-09 14:15:37"
+        }
+    },
+    {
+        "pipeline_id": "20260909_174024",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 20000,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 4.56,
+            "weights_file": "data/models/weights/20260909_174024_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_174024_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 4.768869621329941e-05,
+                "final_train_loss": 0.005039397161453962,
+                "final_pde_loss": 4.926989277009852e-05,
+                "final_dir_loss": 3.7960646182000346e-07,
+                "final_neu_loss": 7.246988388942555e-05,
+                "final_data_loss": 0.0004508012789301574
+            },
+            "timestamp": "2026-09-09 17:45:02"
+        }
+    },
+    {
+        "pipeline_id": "20260909_175451",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 14690,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 4.33,
+            "weights_file": "data/models/weights/20260909_175451_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_175451_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 3.1714422220829874e-05,
+                "final_train_loss": 0.005014009308069944,
+                "final_pde_loss": 3.7758873077109456e-05,
+                "final_dir_loss": 3.8133623547764728e-06,
+                "final_neu_loss": 5.3204734285827726e-05,
+                "final_data_loss": 0.00042545521864667535
+            },
+            "timestamp": "2026-09-09 17:59:16"
+        }
+    },
+    {
+        "pipeline_id": "20260909_182917",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 12912,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 2.59,
+            "weights_file": "data/models/weights/20260909_182917_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_182917_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 3.737531733349897e-05,
+                "final_train_loss": 0.004709166474640369,
+                "final_pde_loss": 2.629414484545123e-05,
+                "final_dir_loss": 2.0126559263644594e-07,
+                "final_neu_loss": 8.141317084664479e-05,
+                "final_data_loss": 0.0004425284278113395
+            },
+            "timestamp": "2026-09-09 18:31:57"
+        }
+    },
+    {
+        "pipeline_id": "20260909_184811",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 12912,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 2.68,
+            "weights_file": "data/models/weights/20260909_184811_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_184811_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 3.737531733349897e-05,
+                "final_train_loss": 0.004709166474640369,
+                "final_pde_loss": 2.629414484545123e-05,
+                "final_dir_loss": 2.0126559263644594e-07,
+                "final_neu_loss": 8.141317084664479e-05,
+                "final_data_loss": 0.0004425284278113395
+            },
+            "timestamp": "2026-09-09 18:50:55"
+        }
+    },
+    {
+        "pipeline_id": "20260909_185116",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 15629,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 4.16,
+            "weights_file": "data/models/weights/20260909_185116_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_185116_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 2.9083792469464242e-05,
+                "final_train_loss": 0.004613330587744713,
+                "final_pde_loss": 2.5372730306116864e-05,
+                "final_dir_loss": 3.594099098336301e-07,
+                "final_neu_loss": 8.305270603159443e-05,
+                "final_data_loss": 0.0004322831518948078
+            },
+            "timestamp": "2026-09-09 18:55:30"
+        },
+        "decoder_lbfgs": {
+            "optimizer": "L-BFGS",
+            "execution_time_minutes": 15.43,
+            "weights_file": "data/models/weights/20260909_185116_decoder_lbfgs.weights.h5",
+            "history_file": "data/models/histories/20260909_185116_decoder_lbfgs.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "final_train_loss": 0.004070106659064557,
+                "final_val_loss": 1.5991563723036373e-05,
+                "final_pde_loss": 1.0878639978277314e-05,
+                "final_dir_loss": 4.529853175613452e-08,
+                "final_neu_loss": 0.00017665056382159,
+                "final_data_loss": 0.00039550239004679537
+            },
+            "timestamp": "2026-09-09 19:42:18"
+        }
+    },
+    {
+        "pipeline_id": "20260909_212451",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 15629,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 3.58,
+            "weights_file": "data/models/weights/20260909_212451_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_212451_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 2.9083810659358278e-05,
+                "final_train_loss": 0.004613330587744713,
+                "final_pde_loss": 2.5372730306116864e-05,
+                "final_dir_loss": 3.594099098336301e-07,
+                "final_neu_loss": 8.305270603159443e-05,
+                "final_data_loss": 0.0004322831518948078
+            },
+            "timestamp": "2026-09-09 21:28:30"
+        },
+        "decoder_lbfgs": {
+            "optimizer": "L-BFGS",
+            "execution_time_minutes": 15.26,
+            "weights_file": "data/models/weights/20260909_212451_decoder_lbfgs.weights.h5",
+            "history_file": "data/models/histories/20260909_212451_decoder_lbfgs.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "final_train_loss": 0.004073185050542313,
+                "final_val_loss": 1.6096267526556812e-05,
+                "final_pde_loss": 1.106213748124106e-05,
+                "final_dir_loss": 4.510896976119501e-08,
+                "final_neu_loss": 0.00017271277773426468,
+                "final_data_loss": 0.000395632565097644
+            },
+            "timestamp": "2026-09-09 21:45:18"
+        },
+        "encoder_vae_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 1850,
+            "patience": 1000,
+            "sigma_noise": 0.019999999552965164,
+            "u_scale": 0.07060286402702332,
+            "execution_time_minutes": 1.61,
+            "weights_file": "data/models/weights/20260909_212451_encoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260909_212451_encoder_adam.loss.npz",
+            "metrics": {
+                "best_val_loss": 1006.2213745117188,
+                "final_train_loss": 1163.4471435546875,
+                "final_data_fid": 1162.4842529296875,
+                "final_val_loss": 1168.547119140625,
+                "final_val_dfid": 1167.550048828125
+            },
+            "timestamp": "2026-09-09 23:16:20"
+        }
+    },
+    {
+        "pipeline_id": "20260910_133032",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 13961,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 3.47,
+            "weights_file": "data/models/weights/20260910_133032_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260910_133032_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 3.672005914268084e-05,
+                "final_train_loss": 0.004801579751074314,
+                "final_pde_loss": 2.5235925932065584e-05,
+                "final_dir_loss": 7.620270707775489e-07,
+                "final_neu_loss": 7.051211287034675e-05,
+                "final_data_loss": 0.0004472312575671822
+            },
+            "timestamp": "2026-09-10 13:34:05"
+        },
+        "decoder_lbfgs": {
+            "optimizer": "L-BFGS",
+            "execution_time_minutes": 16.0,
+            "weights_file": "data/models/weights/20260910_133032_decoder_lbfgs.weights.h5",
+            "history_file": "data/models/histories/20260910_133032_decoder_lbfgs.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "final_train_loss": 0.00404098937763601,
+                "final_val_loss": 1.541798062099509e-05,
+                "final_pde_loss": 9.768672887015283e-06,
+                "final_dir_loss": 1.814003004726891e-08,
+                "final_neu_loss": 0.00012902321435433664,
+                "final_data_loss": 0.0003940198413617587
+            },
+            "timestamp": "2026-09-10 14:01:38"
+        },
+        "encoder_vae_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 3976,
+            "patience": 1000,
+            "sigma_noise": 0.019999999552965164,
+            "u_scale": 0.07060286402702332,
+            "execution_time_minutes": 3.28,
+            "weights_file": "data/models/weights/20260910_133032_encoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260910_133032_encoder_adam.loss.npz",
+            "metrics": {
+                "best_val_loss": 615.7488403320312,
+                "final_train_loss": 1117.6080322265625,
+                "final_data_fid": 1114.9051513671875,
+                "final_val_loss": 620.6193237304688,
+                "final_val_dfid": 617.8759765625
+            },
+            "timestamp": "2026-09-10 14:09:43"
+        }
+    },
+    {
+        "pipeline_id": "20260910_162018",
+        "decoder_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 18415,
+            "batch_size": 8192,
+            "patience": 1000,
+            "execution_time_minutes": 4.31,
+            "weights_file": "data/models/weights/20260910_162018_decoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260910_162018_decoder_adam.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "best_val_loss": 3.3958163839997724e-05,
+                "final_train_loss": 0.004621625412255526,
+                "final_pde_loss": 2.0558502001222223e-05,
+                "final_dir_loss": 2.957247033918975e-07,
+                "final_neu_loss": 7.663789438083768e-05,
+                "final_data_loss": 0.00043857016135007143
+            },
+            "timestamp": "2026-09-10 16:24:41"
+        },
+        "decoder_lbfgs": {
+            "optimizer": "L-BFGS",
+            "execution_time_minutes": 18.54,
+            "weights_file": "data/models/weights/20260910_162018_decoder_lbfgs.weights.h5",
+            "history_file": "data/models/histories/20260910_162018_decoder_lbfgs.loss.npz",
+            "lambdas": {
+                "pde": 10.0,
+                "neu": 0.01,
+                "dir": 100.0,
+                "data": 10.0
+            },
+            "metrics": {
+                "final_train_loss": 0.0040688191799795595,
+                "final_val_loss": 1.1569745061580329e-05,
+                "final_pde_loss": 8.215537514230933e-06,
+                "final_dir_loss": 4.3333683640503965e-08,
+                "final_neu_loss": 0.00023013797444102401,
+                "final_data_loss": 0.000398002905672879
+            },
+            "timestamp": "2026-09-10 18:02:27"
+        },
+        "encoder_vae_adam": {
+            "optimizer": "Adam",
+            "epochs_run": 2680,
+            "patience": 1000,
+            "sigma_noise": 0.019999999552965164,
+            "u_scale": 0.07060286402702332,
+            "execution_time_minutes": 2.21,
+            "weights_file": "data/models/weights/20260910_162018_encoder_adam.weights.h5",
+            "history_file": "data/models/histories/20260910_162018_encoder_adam.loss.npz",
+            "metrics": {
+                "best_val_loss": 28.085264205932617,
+                "final_train_loss": 510.0263977050781,
+                "final_data_fid": 509.2073059082031,
+                "final_val_loss": 33.19520950317383,
+                "final_val_dfid": 32.513648986816406
+            },
+            "timestamp": "2026-09-10 18:06:29"
+        }
+    }
+]

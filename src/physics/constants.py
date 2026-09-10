@@ -1,0 +1,13 @@
+# Physical parameters
+C0_VAL = 62.0
+EPS_VAL = 7.5
+R_A_VAL = 0.0025 # 1 / 400
+M_VAL = 1.529
+M_SCAR = 0.001
+
+# Scar geometry
+SCAR_X_MIN = 0.4
+SCAR_X_MAX = 0.6
+SCAR_Y_MIN = 0.4
+SCAR_Y_MAX = 0.6
+LATO_CICATRICE = SCAR_X_MAX - SCAR_X_MIN

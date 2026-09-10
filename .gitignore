@@ -1,0 +1,14 @@
+# Python cache and checkpoints
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Model weights and loss histories
+*.h5
+*.loss.npz
+
+# Heavy FEM datasets
+*fem*.npz
+*fem*.npy
+centers_split.npz
