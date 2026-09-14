@@ -8,7 +8,9 @@ __pycache__/
 *.h5
 *.loss.npz
 
-# Heavy FEM datasets
+# FEM datasets
 *fem*.npz
 *fem*.npy
 centers_split.npz
+
+.vscode/
