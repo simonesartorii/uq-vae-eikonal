@@ -3,6 +3,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import src.physics.constants as c
 import matplotlib.patches as patches
+from matplotlib.ticker import FormatStrFormatter
 
 N_GRID = 100
 
@@ -49,10 +50,18 @@ def plot_residual_map(X_res, Y_res, residual_grid, cx_test=None, cy_test=None, s
     plt.ylabel("Y [cm]")
     plt.show()
 
+
 def plot_fixed_scar_comparison(X_fem, Y_fem, U_pinn2D, U_fem2D, Rel_err2D):
     v_max_err = Rel_err2D.max()
     if v_max_err == 0: 
         v_max_err = 1e-8
+        
+    plt.rcParams.update({
+        'font.size': 12,          
+        'axes.labelsize': 14,     
+        'axes.titlesize': 16,     
+        'legend.fontsize': 12
+    })
         
     fig, axs = plt.subplots(1, 3, figsize=(18, 5))
     v_min = min(U_pinn2D.min(), U_fem2D.min())
@@ -60,27 +69,42 @@ def plot_fixed_scar_comparison(X_fem, Y_fem, U_pinn2D, U_fem2D, Rel_err2D):
 
     livelli = np.linspace(v_min, v_max, 50)
     livelli_err = np.linspace(0.0, v_max_err, 50)
+    
+    fmt_assi = FormatStrFormatter('%.2g')
 
-    c1 = axs[0].contourf(X_fem, Y_fem, U_pinn2D, levels=livelli, cmap='viridis')
-    axs[0].set_title('PINN Solution', fontsize=12, fontweight='bold')
+    c1 = axs[0].contourf(X_fem, Y_fem, U_fem2D, levels=livelli, cmap='viridis')
+    c1.set_edgecolor("face")
+    c1.set_linewidth(0.5)
+    axs[0].set_title('Ground Truth (FEM Solution)')
     axs[0].set_xlabel('X [cm]')
     axs[0].set_ylabel('Y [cm]')
-    fig.colorbar(c1, ax=axs[0], label='Time [ms]')
+    axs[0].yaxis.set_major_formatter(fmt_assi)
+    cbar1 = fig.colorbar(c1, ax=axs[0], format='%.2g')
+    cbar1.set_label('Time [ms]', size=14)
 
-    c2 = axs[1].contourf(X_fem, Y_fem, U_fem2D, levels=livelli, cmap='viridis')
-    axs[1].set_title('FEM Solution', fontsize=12, fontweight='bold')
+    c2 = axs[1].contourf(X_fem, Y_fem, U_pinn2D, levels=livelli, cmap='viridis')
+    c2.set_edgecolor("face")
+    c2.set_linewidth(0.5)
+    axs[1].set_title('PINN Solution')
     axs[1].set_xlabel('X [cm]')
     axs[1].set_ylabel('Y [cm]')
-    fig.colorbar(c2, ax=axs[1], label='Time [ms]')
+    axs[1].yaxis.set_major_formatter(fmt_assi)
+    cbar2 = fig.colorbar(c2, ax=axs[1], format='%.2g')
+    cbar2.set_label('Time [ms]', size=14)
 
     c3 = axs[2].contourf(X_fem, Y_fem, Rel_err2D, levels=livelli_err, cmap='magma', vmin=0.0)
-    axs[2].set_title('Relative Error |PINN - FEM| / max(|FEM|)', fontsize=12, fontweight='bold')
+    c3.set_edgecolor("face")
+    c3.set_linewidth(0.5)
+    axs[2].set_title('Relative Error |PINN - FEM| / max(|FEM|)')
     axs[2].set_xlabel('X [cm]')
     axs[2].set_ylabel('Y [cm]')
-    fig.colorbar(c3, ax=axs[2], label='Relative Error')
+    axs[2].yaxis.set_major_formatter(fmt_assi)
+    cbar3 = fig.colorbar(c3, ax=axs[2], format='%.2g')
+    cbar3.set_label('Relative Error', size=14)    
 
     plt.tight_layout()
-    plt.show()
+    plt.show()   
+    plt.rcParams.update(plt.rcParamsDefault)
 
 
 def plot_pinn_solution(N_plot, model, U_SCALE):
@@ -202,7 +226,7 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
             axes[idx, 0].set_title("Exact Solution (FEM)", fontsize=12, fontweight='bold')
         axes[idx, 0].set_xlabel('X [cm]')
         axes[idx, 0].set_ylabel(f"Config #{idx+1} (cx={cx_val:.2f}, cy={cy_val:.2f})\nY [cm]", fontsize=10, fontweight='bold')
-        fig.colorbar(c0, ax=axes[idx, 0], fraction=0.046, pad=0.04)
+        fig.colorbar(c0, ax=axes[idx, 0], fraction=0.046, pad=0.04, format='%.2g')
         
         rect_fem = patches.Rectangle(
             (cx_val - scar_edge/2, cy_val - scar_edge/2), 
@@ -216,7 +240,7 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
             axes[idx, 1].set_title("PINN Solution", fontsize=12, fontweight='bold')
         axes[idx, 1].set_xlabel('X [cm]')
         axes[idx, 1].set_ylabel('Y [cm]')
-        fig.colorbar(c1, ax=axes[idx, 1], fraction=0.046, pad=0.04)
+        fig.colorbar(c1, ax=axes[idx, 1], fraction=0.046, pad=0.04, format='%.2g')
         
         rect_pinn = patches.Rectangle(
             (cx_val - scar_edge/2, cy_val - scar_edge/2), 
@@ -230,7 +254,7 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
             axes[idx, 2].set_title('Relative Error |PINN - FEM| / max(|FEM|)', fontsize=12, fontweight='bold')
         axes[idx, 2].set_xlabel('X [cm]')
         axes[idx, 2].set_ylabel('Y [cm]')
-        fig.colorbar(c2, ax=axes[idx, 2], fraction=0.046, pad=0.04, label='Relative Error')
+        fig.colorbar(c2, ax=axes[idx, 2], fraction=0.046, pad=0.04, label='Relative Error', format='%.2g')
         
         rect_res = patches.Rectangle(
             (cx_val - scar_edge/2, cy_val - scar_edge/2), 
