@@ -103,6 +103,7 @@ def plot_fixed_scar_comparison(X_fem, Y_fem, U_pinn2D, U_fem2D, Rel_err2D):
     cbar3.set_label('Relative Error', size=14)    
 
     plt.tight_layout()
+    plt.savefig('results/pipeline_evolution/02_fixed_scar/fixed_scar_comparison.pdf', format='pdf', bbox_inches='tight')
     plt.show()   
     plt.rcParams.update(plt.rcParamsDefault)
 
@@ -161,6 +162,15 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
     Generates a comparative plot (FEM vs PINN vs Relative Error) for each configuration.
     
     """
+    plt.rcParams.update({
+        'font.size': 12,          
+        'axes.labelsize': 14,     
+        'axes.titlesize': 16,     
+        'legend.fontsize': 12
+    })
+    
+    fmt_assi = FormatStrFormatter('%.2g')
+
     cx_all = coords_test[:, 2]
     cy_all = coords_test[:, 3]
 
@@ -174,10 +184,10 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
     for idx, (cx_val, cy_val) in enumerate(unique_scars):
         mask = (cx_all == cx_val) & (cy_all == cy_val)
         coords_subset = coords_test[mask]
-        u_fem_subset = u_fem_all[mask].flatten()
+        u_fem_subset = u_fem_all[mask].flatten() 
         
         coords_tensor = tf.convert_to_tensor(coords_subset, dtype=dtype)
-        u_pinn_subset = model(coords_tensor).numpy().flatten() * U_SCALE
+        u_pinn_subset = model(coords_tensor).numpy().flatten() * U_SCALE 
         
         l2_err_scar = np.linalg.norm(u_pinn_subset - u_fem_subset) / np.linalg.norm(u_fem_subset)
         errors_l2.append(l2_err_scar)
@@ -196,18 +206,18 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
     for idx, (cx_val, cy_val) in enumerate(selected_scars):
         mask = (cx_all == cx_val) & (cy_all == cy_val)
         coords_subset = coords_test[mask]
-        u_fem_subset = u_fem_all[mask].flatten()
+        u_fem_subset = u_fem_all[mask].flatten() 
 
         coords_tensor = tf.convert_to_tensor(coords_subset, dtype=dtype)
-        u_pinn_subset = model(coords_tensor).numpy().flatten() * U_SCALE
+        u_pinn_subset = model(coords_tensor).numpy().flatten() * U_SCALE 
         
         grid_dim = int(np.sqrt(len(u_fem_subset)))
         
         X_grid = coords_subset[:, 0].reshape(grid_dim, grid_dim)
         Y_grid = coords_subset[:, 1].reshape(grid_dim, grid_dim)
             
-        u_fem_2d = u_fem_subset.reshape(grid_dim, grid_dim)
-        u_pinn_2d = u_pinn_subset.reshape(grid_dim, grid_dim)
+        u_fem_2d = u_fem_subset.reshape(grid_dim, grid_dim) * 1000.0
+        u_pinn_2d = u_pinn_subset.reshape(grid_dim, grid_dim) * 1000.0
         
         max_fem = np.max(np.abs(u_fem_2d))
         if max_fem == 0: 
@@ -223,9 +233,10 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
         
         c0 = axes[idx, 0].contourf(X_grid, Y_grid, u_fem_2d, levels=50, cmap='viridis')
         if idx == 0:
-            axes[idx, 0].set_title("Exact Solution (FEM)", fontsize=12, fontweight='bold')
+            axes[idx, 0].set_title("Exact Solution (FEM)")
         axes[idx, 0].set_xlabel('X [cm]')
-        axes[idx, 0].set_ylabel(f"Config #{idx+1} (cx={cx_val:.2f}, cy={cy_val:.2f})\nY [cm]", fontsize=10, fontweight='bold')
+        axes[idx, 0].set_ylabel(f"Config #{idx+1} (cx={cx_val:.2f}, cy={cy_val:.2f})\nY [cm]")
+        axes[idx, 0].yaxis.set_major_formatter(fmt_assi)
         fig.colorbar(c0, ax=axes[idx, 0], fraction=0.046, pad=0.04, format='%.2g')
         
         rect_fem = patches.Rectangle(
@@ -237,9 +248,10 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
         
         c1 = axes[idx, 1].contourf(X_grid, Y_grid, u_pinn_2d, levels=50, cmap='viridis')
         if idx == 0:
-            axes[idx, 1].set_title("PINN Solution", fontsize=12, fontweight='bold')
+            axes[idx, 1].set_title("PINN Solution")
         axes[idx, 1].set_xlabel('X [cm]')
         axes[idx, 1].set_ylabel('Y [cm]')
+        axes[idx, 1].yaxis.set_major_formatter(fmt_assi)
         fig.colorbar(c1, ax=axes[idx, 1], fraction=0.046, pad=0.04, format='%.2g')
         
         rect_pinn = patches.Rectangle(
@@ -251,9 +263,10 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
         
         c2 = axes[idx, 2].contourf(X_grid, Y_grid, Rel_err2D, levels=levels_err, cmap='magma', vmin=0.0)
         if idx == 0:
-            axes[idx, 2].set_title('Relative Error |PINN - FEM| / max(|FEM|)', fontsize=12, fontweight='bold')
+            axes[idx, 2].set_title('Relative Error |PINN - FEM| / max(|FEM|)')
         axes[idx, 2].set_xlabel('X [cm]')
         axes[idx, 2].set_ylabel('Y [cm]')
+        axes[idx, 2].yaxis.set_major_formatter(fmt_assi)
         fig.colorbar(c2, ax=axes[idx, 2], fraction=0.046, pad=0.04, label='Relative Error', format='%.2g')
         
         rect_res = patches.Rectangle(
@@ -264,4 +277,6 @@ def evaluate_and_plot_parametric_scars(model, coords_test, u_fem_all, U_SCALE,
         axes[idx, 2].add_patch(rect_res)
 
     plt.tight_layout()
+    plt.savefig('results/pipeline_evolution/03_parametric_pinn/parametric_inference.pdf', format='pdf', bbox_inches='tight')
     plt.show()
+    plt.rcParams.update(plt.rcParamsDefault)
