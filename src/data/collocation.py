@@ -93,6 +93,11 @@ def generate_boundary_grid(N_activation, N_neumann, r, dtype=tf.float32):
 def generate_parametric_collocation_points(N_interior, N_boundary, N_activation, r_a, dtype= tf.float32):
     """
     Generates 4d collocation points [x, y, cx, cy]
+    Args:
+        N_interior: number of interior points to generate
+        N_boundary: number of boundary points to generate (per edge) for the Neumann BCs
+        N_activation: number of boundary points to generate in activation regione for the Dirichlet BCs 
+        r_a: activation radius 
     """
     # 2d grid: [x, y]
     x_int_2D = generate_interior_grid(N=N_interior, split_scar=0.0, dtype=dtype)

@@ -27,7 +27,9 @@ def _build_mesh_and_bc(N, r_a):
 
 
 def _build_solver(V, bc, M_tensor):
-    """Solver for a given M_tensor"""
+    """
+    Builds the solver for a given M_tensor.
+    """
     psi, v = Function(V), TestFunction(V)
     eps, c0 = Constant(c.EPS_VAL), Constant(c.C0_VAL)
     grad_psi = grad(psi)
@@ -49,7 +51,12 @@ def _build_solver(V, bc, M_tensor):
 
 
 def generate_fem_data(N=400, r_a=0.0025, base_dir='data/fixed_scar'):
-    """Generates FEM data with non constant M_tensor"""
+    """
+    Generates FEM data with non constant M_tensor
+    Args:
+        N: number of points per edge of the square
+        r_a: activation radius to impose Dirichlet BCs
+    """
     os.makedirs(base_dir, exist_ok=True)
     set_log_level(40)
 

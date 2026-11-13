@@ -18,7 +18,7 @@ def make_neg_log_post(decoder_pinn, X_obs, mu_pr, Gamma_pr_inv, mu_E, Gamma_E_in
         inp = tf.reshape(tf.concat([x_exp, u_exp], axis=-1), [-1, 4])
         y_pred = tf.reshape(decoder_pinn(inp), [B, S])
 
-        r = y - y_pred - mu_E                                          # (B, S)
+        r = y - y_pred - mu_E # (B, S)
         nll = 0.5 * tf.reduce_sum(tf.matmul(r, Gamma_E_inv) * r, axis=1)
         d = u - mu_pr
         nlp = 0.5 * tf.reduce_sum(tf.matmul(d, Gamma_pr_inv) * d, axis=1)
@@ -29,8 +29,7 @@ def make_neg_log_post(decoder_pinn, X_obs, mu_pr, Gamma_pr_inv, mu_E, Gamma_E_in
 
 def find_map(neg_log_post, y, dtype, n_grid, steps, lr, chunk):
     """
-    MAP in u-space computed only from the posterior (likelihood + prior),
-    starting from a grid of points independent of the encoder.
+    MAP in u-space computed only from the posterior (likelihood + prior) starting from a grid of points independent of the encoder.
     """
     g = np.linspace(0.2, 0.8, n_grid)
     starts = np.array([[a, b] for a in g for b in g], dtype=np.float32)  # (K, 2)
