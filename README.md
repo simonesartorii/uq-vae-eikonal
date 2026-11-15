@@ -13,7 +13,7 @@ Solving inverse problems for the Eikonal model via Physics-Informed Neural Netwo
 
 ## Requirements
 
-Python 3, PyTorch, NumPy, Matplotlib.
+Python 3, NumPy, Matplotlib, Fenics, Tensorflow, Tensorflow Probability, .
 
 ## Usage
 
