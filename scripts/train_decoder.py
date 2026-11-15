@@ -15,6 +15,14 @@ from src.utils.metrics import compute_test_metrics
 from src.hyperparameters import hypers_uqvae as h
 
 def train_and_evaluate_decoder(nx, ny, r_a, output_dir: str, result_dir: str, data_dir=None):
+    """
+    Function to train and evaluate the PINN
+    Args: 
+        - nx, ny: dimension of the grid
+        - r_a: activation radius (Dirichlet Boundary)
+        - directories to save outputs and results
+    Returns model, U_SCALE, L2 relative error, Mean Absolute Error, training times for Adam and L-BFGS phases
+    """
     tf.keras.backend.clear_session()
     
     np.random.seed(42)

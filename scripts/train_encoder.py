@@ -14,6 +14,10 @@ from src.hyperparameters import hypers_uqvae as h
 from src.visualization.pdeplots import N_GRID
 
 def train_and_evaluate_encoder(decoder_model, output_dir: str, result_dir: str, data_dir):
+    """
+    Function to train and evaluate the encoder of the UQ-VAE.
+    Returns the encoder model, Mean Absolute Error on the center coordinates, coverage and training time for the encoder
+    """
     tf.keras.backend.clear_session()
 
     np.random.seed(42)
