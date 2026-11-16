@@ -159,9 +159,13 @@ def evaluate_pinn_accuracy(base_data_dir='data/multiresolution',
             continue
         
         coords_tf = tf.cast(coords_test, dtype=number_type)
+
+        start_time = time.time()
         u_pred_norm = model_eval(coords_tf)
         u_pred = u_pred_norm.numpy() * u_scale_model
-        
+        end_time = time.time()
+        inference_time = end_time - start_time
+
         diff = u_pred.flatten() - values_clean_800.flatten()
         norm_diff = np.linalg.norm(diff)
         norm_clean = np.linalg.norm(values_clean_800.flatten())
@@ -171,6 +175,6 @@ def evaluate_pinn_accuracy(base_data_dir='data/multiresolution',
         pinn_resolutions.append(resolution)
         pinn_l2_errors.append(l2_err_pinn)
         
-        print(f"PINN trained on FEM {resolution:<10} | L2 Rel Error vs Clean {gt_res}: {l2_err_pinn:.4f} %")
+        print(f"PINN trained on FEM {resolution:<10} | L2 Rel Error vs Clean {gt_res}: {l2_err_pinn:.4f} % | Time: {inference_time:.4f} s")
         
     return pinn_resolutions, pinn_l2_errors
